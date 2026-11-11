@@ -1,0 +1,139 @@
+.TH RAISA 1 2026-11-10 "raisa 1.0" "User Commands"
+.SH NAME
+raisa \- terminal client for the SCP Wiki
+.SH SYNOPSIS
+.B raisa
+.RB [ \-b
+.IR branch ]
+.RI [ target ]
+.SH DESCRIPTION
+.B raisa
+reads the SCP Wiki in a terminal. The screen shows the bookmarks on the left
+(as wide as the longest title, at most 0.3 of the window; longer titles wrap)
+and the open page on the right: an article, a series list or a hub, the text
+centred and up to 80 characters wide. The column that is not focused is dim; a
+narrow window shows only the focused one. Back and forward work like in a
+browser. The main page of the site starts with the site menu (series, hubs,
+tales and so on).
+.PP
+The top line shows "SCP Foundation - en" (the branch code); on the right,
+messages, loading, the address of the selected link or of the open page. On an
+object page its background shows the object class in the terminal colours: Safe
+green, Euclid yellow, Keter red, Thaumiel magenta.
+.PP
+Images are drawn in the text when python-pillow is installed (SVG also needs
+rsvg-convert from librsvg): with Sixel if the terminal supports it (foot does),
+otherwise with half-block characters in 24-bit colour. A photo is as wide as the
+text and at most two thirds of the screen high; icons, logos and buttons keep
+their size.
+.PP
+One run reads one branch; links to other branches open in the web browser.
+.SH OPTIONS
+.TP
+.BI \-b " branch"
+The branch to read:
+en cn cs de es fr it jp ko pl pt ru th ua vn zh int.
+Default: en.
+.TP
+.I target
+A page to open: 173, scp-682-j, 001-jp, a page name or a URL. Without it the
+last page of the branch is opened with the reading position; on the first run,
+the main page.
+.SH KEYS
+.TP
+.B j/k, arrow keys
+scroll by a line
+.TP
+.B d/u, ^d/^u, PgDn/PgUp
+scroll by half a screen
+.TP
+.B Space
+scroll by a whole screen
+.TP
+.B g/G, Home/End
+go to the top or the bottom
+.TP
+.B n, p/N
+go to the next or the previous page or position
+.TP
+.B J/K
+select the next or the previous link
+.TP
+.B Tab/Shift-Tab, h/l
+switch between the bookmarks and the text
+.TP
+.B Enter
+open the selected link or bookmark
+.TP
+.B Esc
+close the search
+.TP
+.B /
+search the site
+.TP
+.B m
+open the main page of the site
+.TP
+.B o
+open the current page in the browser
+.TP
+.B i
+open the image in an external viewer
+.TP
+.B b
+bookmark the current page, or remove the bookmark
+.TP
+.B B
+bookmark the selected link, or remove the bookmark
+.TP
+.B x
+remove the selected bookmark
+.TP
+.B q
+quit
+.PP
+A jump with g or G is a step like following a link: N returns from it.
+.PP
+A bookmark is titled as the page calls itself: on most branches an object page
+is titled with its number alone, on some (the Russian one) with its name too. So
+B loads the page before bookmarking it.
+.PP
+The bookmarks column lists the bookmarks of the current branch, alphabetically.
+While it is focused, the keys that scroll move its cursor (J/K too).
+.SS Search
+The search line opens at the bottom. Enter on an object number or a URL goes
+there; Enter on words opens a page of results, read and followed like any page:
+under Titles, pages whose title matches (the Crom index, at most five); on the
+Russian branch also under Text, the site's full-text search with excerpts, ten
+a page, then a More results link. Esc, or Backspace on an empty line, closes the
+line. Pasting text opens the line with that text.
+.SH FILES
+.TP
+.I ~/.cache/raisa/
+pages (fresh for a day), images,
+the Anubis cookie pass
+.TP
+.I ~/.local/share/raisa/state.json
+bookmarks and the last page of every branch
+.SH NOTES
+Several copies can run at once, for example one per branch in two windows: every
+change to state.json re-reads it under a lock, so no bookmark is lost.
+.PP
+If something goes wrong, a message appears in the top line, and the details are
+printed to the terminal after exit.
+.PP
+In a terminal with the kitty keyboard protocol (foot, kitty, WezTerm, Ghostty,
+Alacritty) raisa turns it on by itself, so hotkeys work in any keyboard layout.
+Other terminals (xterm, cool-retro-term, the Linux console) work too; there
+hotkeys work in the US and Russian layouts.
+.PP
+The Russian site is protected by Anubis; raisa solves its check like a browser
+does. The check is tied to the IP address, so it fails when the outgoing address
+changes between requests (some VPNs). Title search uses the Crom index
+(api.crom.avn.sh). Full-text search exists only on the Russian branch:
+Wikidot's own search is turned off.
+.SH AUTHOR
+DaemonLife <https://github.com/DaemonLife>
+.SH SEE ALSO
+.BR xdg-open (1),
+.BR foot (1)
