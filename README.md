@@ -2,6 +2,9 @@
 
 A terminal client for the [SCP Wiki](https://scp-wiki.wikidot.com): articles, series lists, hubs and tales of 17 branches, with bookmarks, search and images right in the text. Named after RAISA, the Foundation's Records and Information Security Administration.
 
+![raisa ui](docs/images/2026-11-11_13-49-55.png)
+raisa in [cool-retro-term](https://github.com/Swordfish90/cool-retro-term)
+
 - **Two columns.** Bookmarks on the left, the open page on the right; the text is centred and at most 80 characters wide. A narrow window shows one column, the focused one.
 - **Like a browser.** `J`/`K` and `Enter` follow links, `p`/`N` and `n` go back and forward, and the reading position is remembered.
 - **Images in the text**: Sixel (foot) or `▀` characters in other terminals; GIF animations play.
@@ -72,6 +75,9 @@ q                         - quit
 
 ## The screen
 
+![keter](docs/images/2026-11-11_13-15-17.png)
+raisa in [foot](https://codeberg.org/dnkl/foot) terminal
+
 The top line shows "SCP Foundation - en" (the branch code); on the right, messages, loading, and the address of the selected link or of the open page. The page title has, on its right, the `bookmarked` mark, the place in the back/forward chain ("2/3") and how much has been read.
 
 The main page of the site (`m`) starts with the site menu: series, hubs, tales. It is a good place to start when the object number is not known.
@@ -102,6 +108,9 @@ Every opened page is a step, as in a browser: `N` (or `p`) goes back, `n` forwar
 The chain of steps lasts until the program exits; the next run restores only the last page.
 
 ## Images
+
+![keter](docs/images/2026-11-11_12-54-17.png)
+SCP-049 in foot and cool-retro-term
 
 Images are shown in the text and scroll with it when Pillow is installed. In a terminal with Sixel (raisa asks the terminal itself) they are drawn in pixels; elsewhere, with `▀` characters in 24-bit colour, two points to a cell.
 
