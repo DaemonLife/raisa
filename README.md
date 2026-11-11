@@ -14,7 +14,9 @@ raisa in [cool-retro-term](https://github.com/Swordfish90/cool-retro-term)
 
 This is an unofficial program. The texts of the SCP Wiki belong to their authors and are licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/); raisa only displays them.
 
-How the code works: [docs/how-it-works.md](docs/how-it-works.md). What has changed: [CHANGES.md](CHANGES.md).
+> **Note.** I am not much of a programmer, so almost all of the code was written by AI. I have tested it a lot and made many corrections, but I cannot guarantee its quality. You are welcome to improve the project with patches or suggestions; I will be glad of the help.
+
+How the code works: [docs/how-it-works.md](docs/how-it-works.md).
 
 ## Installing and running (Arch)
 
